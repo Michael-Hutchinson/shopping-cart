@@ -20,7 +20,8 @@ const App: React.FunctionComponent = () => {
     getProducts
   );
 
-  const getTotalItems = (items: CartItemType[]) => null;
+  const getTotalItems = (items: CartItemType[]) =>
+    items.reduce((acc: number, item) => acc + item.amount, 0);
   const handleAddToCart = () => null;
   const handleRemoveFromCart = (clickedItem: CartItemType) => null;
   if (isLoading) return <LinearProgress />;
