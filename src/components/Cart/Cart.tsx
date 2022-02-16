@@ -3,13 +3,13 @@ import CartItem from '../CartItem/CartItem';
 import { CartItemType } from '../../models/cart.model';
 import { Wrapper } from './Cart.styles';
 
-interface ICartItemProps {
+interface ICartProps {
   cartItems: CartItemType[];
   addToCart: (clickedItem: CartItemType) => void;
   removeFromCart: (id: number) => void;
 }
 
-const Cart: React.FunctionComponent<ICartItemProps> = ({
+const Cart: React.FunctionComponent<ICartProps> = ({
   cartItems,
   addToCart,
   removeFromCart,
