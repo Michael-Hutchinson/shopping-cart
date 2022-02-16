@@ -5,5 +5,5 @@ export interface CartItemType {
   image: string;
   price: number;
   title: string;
-  amount: number;
+  quantity: number;
 }

@@ -19,7 +19,7 @@ const CartItem: React.FunctionComponent<ICartItemProps> = ({
       <h3>{item.title}</h3>
       <div className="information">
         <p>Price: £{item.price}</p>
-        <p>Total: £{(item.amount * item.price).toFixed(2)}</p>
+        <p>Total: £{(item.quantity * item.price).toFixed(2)}</p>
       </div>
       <div className="buttons">
         <Button
@@ -29,7 +29,7 @@ const CartItem: React.FunctionComponent<ICartItemProps> = ({
         >
           -
         </Button>
-        <p>{item.amount}</p>
+        <p>{item.quantity}</p>
         <Button
           size="small"
           variant="contained"
