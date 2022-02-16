@@ -8,6 +8,7 @@ import Badge from '@material-ui/core/Badge';
 import { Wrapper, StyledButton } from './App.styles';
 import { CartItemType } from './models/cart.model';
 import Item from './components/Item/Item';
+import Cart from './components/Cart/Cart';
 
 const getProducts = async (): Promise<CartItemType[]> =>
   (await fetch('https://fakestoreapi.com/products')).json();
@@ -23,13 +24,17 @@ const App: React.FunctionComponent = () => {
   const getTotalItems = (items: CartItemType[]) =>
     items.reduce((acc: number, item) => acc + item.amount, 0);
   const handleAddToCart = () => null;
-  const handleRemoveFromCart = (clickedItem: CartItemType) => null;
+  const handleRemoveFromCart = () => null;
   if (isLoading) return <LinearProgress />;
   if (error) return <div>Something went wrong ...</div>;
   return (
     <Wrapper>
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-        Hello
+        <Cart
+          cartItems={cartItems}
+          addToCart={handleAddToCart}
+          removeFromCart={handleRemoveFromCart}
+        />
       </Drawer>
       <StyledButton onClick={() => setCartOpen(true)}>
         <Badge badgeContent={getTotalItems(cartItems)} color="error">
