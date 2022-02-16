@@ -5,9 +5,13 @@ import { Wrapper } from './Item.styles';
 
 interface IItemProps {
   item: CartItemType;
+  handleAddToCart: (clickedItem: CartItemType) => void;
 }
 
-const Item: React.FunctionComponent = () => (
+const Item: React.FunctionComponent<IItemProps> = ({
+  item,
+  handleAddToCart,
+}) => (
   <>
     <div>Test</div>
     <p>Test P</p>
