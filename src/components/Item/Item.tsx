@@ -19,6 +19,7 @@ const Item: React.FunctionComponent<IItemProps> = ({
       <p>{item.description}</p>
       <h3>£{item.price}</h3>
     </div>
+    <Button>Add to cart</Button>
   </Wrapper>
 );
 
