@@ -20,7 +20,7 @@ const App: React.FunctionComponent = () => {
     getProducts
   );
 
-  const getTotalItems = () => null;
+  const getTotalItems = (items: CartItemType[]) => null;
   const handleAddToCart = () => null;
   const handleRemoveFromCart = (clickedItem: CartItemType) => null;
   if (isLoading) return <LinearProgress />;
@@ -30,7 +30,11 @@ const App: React.FunctionComponent = () => {
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
         Hello
       </Drawer>
-      <StyledButton onClick={() => setCartOpen(true)}>Hello</StyledButton>
+      <StyledButton onClick={() => setCartOpen(true)}>
+        <Badge badgeContent={getTotalItems(cartItems)} color="error">
+          <AddShoppingCartIcon />
+        </Badge>
+      </StyledButton>
       <Grid container spacing={3}>
         {data?.map((item) => (
           <Grid item key={item.id} xs={12} sm={4}>
