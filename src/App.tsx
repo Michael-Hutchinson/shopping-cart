@@ -22,8 +22,20 @@ const App: React.FunctionComponent = () => {
   );
 
   const getTotalItems = (items: CartItemType[]) =>
-    items.reduce((acc: number, item) => acc + item.amount, 0);
-  const handleAddToCart = () => null;
+    items.reduce((acc: number, item) => acc + item.quantity, 0);
+  const handleAddToCart = (clickedItem: CartItemType) => {
+    setCartItems((prevState) => {
+      const isItemInCart = prevState.find((item) => item.id === clickedItem.id);
+      if (isItemInCart) {
+        return prevState.map((item) =>
+          item.id === clickedItem.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return [...prevState, { ...clickedItem, quantity: 1 }];
+    });
+  };
   const handleRemoveFromCart = () => null;
   if (isLoading) return <LinearProgress />;
   if (error) return <div>Something went wrong ...</div>;
