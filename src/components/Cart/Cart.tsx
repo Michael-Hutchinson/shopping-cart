@@ -18,7 +18,12 @@ const Cart: React.FunctionComponent<ICartProps> = ({
     <h2>Shopping Cart</h2>
     {cartItems.length === 0 ? <p>Cart is empty</p> : null}
     {cartItems.map((item) => (
-      <CartItem />
+      <CartItem
+        key={item.id}
+        item={item}
+        addToCart={addToCart}
+        removeFromCart={removeFromCart}
+      />
     ))}
   </Wrapper>
 );
