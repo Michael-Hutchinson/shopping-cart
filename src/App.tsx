@@ -25,11 +25,12 @@ const App: React.FunctionComponent = () => {
     'products',
     getProducts
   );
-  console.log(data);
 
   const getTotalItems = () => null;
   const handleAddToCart = () => null;
   const handleRemoveFromCart = () => null;
+  if (isLoading) return <LinearProgress />;
+  if (error) return <div>Something went wrong ...</div>;
   return <p>Hello</p>;
 };
 
