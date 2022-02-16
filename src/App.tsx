@@ -7,6 +7,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Badge from '@material-ui/core/Badge';
 import { Wrapper } from './App.styles';
 import { CartItemType } from './models/cart.model';
+import Item from './components/Item/Item';
 
 const getProducts = async (): Promise<CartItemType[]> =>
   (await fetch('https://fakestoreapi.com/products')).json();
@@ -19,10 +20,20 @@ const App: React.FunctionComponent = () => {
 
   const getTotalItems = () => null;
   const handleAddToCart = () => null;
-  const handleRemoveFromCart = () => null;
+  const handleRemoveFromCart = (clickedItem: CartItemType) => null;
   if (isLoading) return <LinearProgress />;
   if (error) return <div>Something went wrong ...</div>;
-  return <p>Hello</p>;
+  return (
+    <Wrapper>
+      <Grid container spacing={3}>
+        {data?.map((item) => (
+          <Grid item key={item.id} xs={12} sm={4}>
+            <Item item={item} handleAddToCart={handleAddToCart} />
+          </Grid>
+        ))}
+      </Grid>
+    </Wrapper>
+  );
 };
 
 export default App;
