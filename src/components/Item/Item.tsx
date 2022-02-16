@@ -12,10 +12,14 @@ const Item: React.FunctionComponent<IItemProps> = ({
   item,
   handleAddToCart,
 }) => (
-  <>
-    <div>Test</div>
-    <p>Test P</p>
-  </>
+  <Wrapper>
+    <img src={item.image} alt={item.title} />
+    <div>
+      <h3>{item.title}</h3>
+      <p>{item.description}</p>
+      <h3>£{item.price}</h3>
+    </div>
+  </Wrapper>
 );
 
 export default Item;
